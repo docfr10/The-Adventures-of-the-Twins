@@ -10,31 +10,40 @@ public class Player : MonoBehaviour
     [SerializeField] private bool is_grounded = false;
 
     private Rigidbody2D rb;
-    private SpriteRenderer sprite;
+    private bool is_look_right = true;
 
     private void Awake()
     {
-        //Присваиваем значения Rigidbody и SpriteRenderer игрока к переменным в скрипте
+        //Присваиваем значения Rigidbody игрока к переменным в скрипте
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Move()
     {
         Vector3 dir = transform.right * Input.GetAxis("Horizontal");
-
+        //Перемещение игрока
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
-
-        sprite.flipX = dir.x < 0.0f;
+        //Поворот игрока налево или направо
+        Flip();
     }
 
     private void Jump()
     {
+        //Прыжок игрока
         rb.AddForce(transform.up * jump_fource, ForceMode2D.Impulse);
+    }
+
+    private void Flip()
+    {
+        if (Input.GetAxisRaw("Horizontal") == 1)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (Input.GetAxisRaw("Horizontal") == -1)
+            transform.localScale = new Vector3(-1, 1, 1);
     }
 
     private void CheckGround()
     {
+        //Проверка на то, на земле ли персонаж
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 1f);
         is_grounded = collider.Length > 1;
     }
