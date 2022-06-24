@@ -22,7 +22,10 @@ public class Player : MonoBehaviour
     public enum States //Запись всех состояний анимаций
     {
         idle,
-        Move
+        Move,
+        Jump,
+        JumpDOWN,
+        JumpLand
     }
 
     private States State
@@ -41,7 +44,8 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        rb.AddForce(transform.up * jump_fource, ForceMode2D.Impulse);//Прыжок игрока
+        rb.AddForce(transform.up * 2 * jump_fource, ForceMode2D.Impulse);//Прыжок игрока
+        State = States.Jump;//Как только вызывается метод Jump проигрывается анимация прыжка
     }
 
     private void Flip()//Повороты игрока
@@ -54,9 +58,16 @@ public class Player : MonoBehaviour
 
     private void CheckGround()//Проверка на то, на земле ли персонаж
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 1f);
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.5f);
         is_grounded = collider.Length > 1;
     }
+
+    private void FallСheck()
+    {
+        if (rb.velocity.y < 0)
+            State = States.JumpDOWN;
+    }
+
 
     // Start is called before the first frame update
     private void Start()
@@ -67,6 +78,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         CheckGround();
+        FallСheck();
     }
 
     // Update is called once per frame
