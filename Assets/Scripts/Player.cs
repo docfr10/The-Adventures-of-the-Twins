@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
 {
     [SerializeField] private float speed = 3f; //скорость движени€
     [SerializeField] private int lives = 3; //количество жизней
@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
+    //
+    public GameObject bullet;
+    //
     private bool is_look_right = true;
 
     private void Awake()
@@ -56,6 +59,12 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
     }
 
+    private void Throwing()//ћетание снар€дов 
+    {
+        Instantiate(bullet, transform.position, transform.rotation);
+
+    }
+
     private void CheckGround()//ѕроверка на то, на земле ли персонаж
     {
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.5f);
@@ -90,5 +99,7 @@ public class Player : MonoBehaviour
             Move();
         if (is_grounded && Input.GetButton("Jump"))
             Jump();
+        if (Input.GetKeyDown(KeyCode.R))
+            Throwing();
     }
 }
