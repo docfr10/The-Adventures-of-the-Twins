@@ -6,7 +6,7 @@ public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
 {
     [SerializeField] private float speed = 3f; //скорость движения
     [SerializeField] private int lives = 3; //количество жизней
-    [SerializeField] private float jump_fource = 0.2f; //сила прыжка
+    [SerializeField] private float jump_fource = 0.5f; //сила прыжка
     [SerializeField] private bool is_grounded = false;
 
     private Rigidbody2D rb;

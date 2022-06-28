@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 746433509}
+    - target: {fileID: 2692334738094162777, guid: a5189389db799d74792bf33478839a97, type: 3}
+      propertyPath: jump_fource
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2692334738094162783, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: m_Name
       value: Player
@@ -631,7 +635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &613863879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,7 +968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1143997891
 Transform:
   m_ObjectHideFlags: 0
