@@ -11,10 +11,13 @@ public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
 
     private Rigidbody2D rb;
     private Animator animator;
-    //
-    public GameObject bullet;
-    //
     private bool is_look_right = true;
+
+    public GameObject bullet;
+    public Transform shortPoint;
+
+    private float timeBTWShots;
+    public float startTimeBTWShots;
 
     private void Awake()
     {
@@ -59,12 +62,6 @@ public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
             transform.localScale = new Vector3(-1, 1, 1);
     }
 
-    private void Throwing()//ћетание снар€дов 
-    {
-        Instantiate(bullet, transform.position, transform.rotation);
-
-    }
-
     private void CheckGround()//ѕроверка на то, на земле ли персонаж
     {
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.5f);
@@ -95,11 +92,24 @@ public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
     {
         if (is_grounded)//≈сли персонаж на земле, то проигрываетс€ анимаци€ сто€ни€ на месте
             State = States.idle;
+
         if (Input.GetButton("Horizontal"))
             Move();
+
         if (is_grounded && Input.GetButton("Jump"))
             Jump();
-        if (Input.GetKeyDown(KeyCode.R))
-            Throwing();
+
+        if (timeBTWShots <= 0)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Instantiate(bullet, shortPoint.position, transform.rotation);
+                timeBTWShots = startTimeBTWShots;
+            }
+        }
+        else
+        {
+            timeBTWShots -= Time.deltaTime;
+        }
     }
 }
