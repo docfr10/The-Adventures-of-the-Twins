@@ -31,7 +31,8 @@ public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
         Move,
         Jump,
         JumpDOWN,
-        JumpLand
+        JumpLand,
+        AppleThrow
     }
 
     private States State
@@ -74,11 +75,18 @@ public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
             State = States.JumpDOWN;
     }
 
+    private void Throwing()
+    {
+        Instantiate(bullet, shortPoint.position, transform.rotation);
+        timeBTWShots = startTimeBTWShots;
+        State = States.AppleThrow;
+    }
+
 
     // Start is called before the first frame update
     private void Start()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -103,8 +111,7 @@ public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Instantiate(bullet, shortPoint.position, transform.rotation);
-                timeBTWShots = startTimeBTWShots;
+                Throwing();
             }
         }
         else
