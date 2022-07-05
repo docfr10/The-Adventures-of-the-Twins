@@ -28,11 +28,11 @@ public class Bullet : MonoBehaviour
         //transform.Translate(Vector2.right * speed * Time.deltaTime);
         if (Player.is_look_right == true)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            gameObject.transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
         else if (Player.is_look_right == false)
         {
-            transform.Translate(-Vector2.right * speed * Time.deltaTime);
+            gameObject.transform.Translate(-Vector2.right * speed * Time.deltaTime);
         }
     }
 

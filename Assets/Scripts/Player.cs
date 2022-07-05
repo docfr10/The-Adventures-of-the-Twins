@@ -46,7 +46,14 @@ public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
         if (is_grounded) State = States.Move;// ак только вызываетс€ метод Move проигрываетс€ анимаци€ перемещени€
         Vector3 dir = transform.right * Input.GetAxis("Horizontal");
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);//ѕеремещение игрока
-        Flip();//ѕоворот игрока налево или направо
+        if ((is_look_right == false) && (Input.GetAxisRaw("Horizontal") > 0))
+        {
+            Flip();//ѕоворот игрока налево или направо
+        }
+        else if ((is_look_right == true) && (Input.GetAxisRaw("Horizontal") < 0))
+        {
+            Flip();//ѕоворот игрока налево или направо
+        }
     }
 
     private void Jump()
@@ -57,16 +64,10 @@ public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
 
     private void Flip()//ѕовороты игрока
     {
-        if (Input.GetAxisRaw("Horizontal") == 1)
-        {
-            is_look_right = true;
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (Input.GetAxisRaw("Horizontal") == -1)
-        {
-            is_look_right = false;
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+        is_look_right = !is_look_right;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
     }
 
     private void CheckGround()//ѕроверка на то, на земле ли персонаж
@@ -80,12 +81,9 @@ public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
         if (rb.velocity.y < 0)
             State = States.JumpDOWN;
     }
-
-    public static GameObject bulletClone;
-
     private void Throwing()
     {
-        bulletClone = Instantiate(bullet, shortPoint.position, transform.rotation);
+        Instantiate(bullet, shortPoint.position, transform.rotation);
         timeBTWShots = startTimeBTWShots;
         State = States.AppleThrow;
     }
@@ -107,7 +105,7 @@ public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
     private void Update()
     {
 
-        if (is_grounded)//≈сли персонаж на земле, то проигрываетс€ анимаци€ сто€ни€ на месте
+        if (is_grounded && (State != States.AppleThrow))//≈сли персонаж на земле и не стрел€ет, то проигрываетс€ анимаци€ сто€ни€ на месте
             State = States.idle;
 
         if (Input.GetButton("Horizontal"))
@@ -118,7 +116,7 @@ public class Player : MonoBehaviour// ласс отвечает за передвижение персонажа
 
         if (timeBTWShots <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKey(KeyCode.R))
             {
                 Throwing();
             }
