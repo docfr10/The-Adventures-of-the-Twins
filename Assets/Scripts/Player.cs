@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
 {
+    public float jump_fource; //сила прыжка
     [SerializeField] private float speed = 3f; //скорость движения
     [SerializeField] private int lives = 3; //количество жизней
-    [SerializeField] private float jump_fource = 0.5f; //сила прыжка
     [SerializeField] private bool is_grounded = false;
 
-    private Rigidbody2D rb;
+    public static Rigidbody2D rb;
     private Animator animator;
-    private bool is_look_right = true;
+    public static bool is_look_right = true;
 
     public GameObject bullet;
     public Transform shortPoint;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
         AppleThrow
     }
 
-    private States State
+    public States State
     {
         get { return (States)animator.GetInteger("state"); }//Получаем активное состояние анимации
         set { animator.SetInteger("state", (int)value); }//Меняем активное состтяние анимации
@@ -58,9 +58,15 @@ public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
     private void Flip()//Повороты игрока
     {
         if (Input.GetAxisRaw("Horizontal") == 1)
+        {
+            is_look_right = true;
             transform.localScale = new Vector3(1, 1, 1);
+        }
         else if (Input.GetAxisRaw("Horizontal") == -1)
+        {
+            is_look_right = false;
             transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
     private void CheckGround()//Проверка на то, на земле ли персонаж
@@ -75,9 +81,11 @@ public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
             State = States.JumpDOWN;
     }
 
+    public static GameObject bulletClone;
+
     private void Throwing()
     {
-        Instantiate(bullet, shortPoint.position, transform.rotation);
+        bulletClone = Instantiate(bullet, shortPoint.position, transform.rotation);
         timeBTWShots = startTimeBTWShots;
         State = States.AppleThrow;
     }
@@ -98,6 +106,7 @@ public class Player : MonoBehaviour//Класс отвечает за передвижение персонажа
     // Update is called once per frame
     private void Update()
     {
+
         if (is_grounded)//Если персонаж на земле, то проигрывается анимация стояния на месте
             State = States.idle;
 

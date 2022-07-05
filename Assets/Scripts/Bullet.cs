@@ -9,11 +9,31 @@ public class Bullet : MonoBehaviour
     public float distance;
     public int damage;
     public LayerMask whatIsSolid;
+    public GameObject bullet;
+    public bool is_active = true;
 
     // Start is called before the first frame update
     private void Start()
     {
         
+    }
+
+    private void OnBecameInvisible() //≈сли снар€д ушел за поле зрени€ камеры игрока, то он уничтожаетс€
+    {
+        Destroy(gameObject);    
+    }
+
+    public void Throwing() //ћетод, задающий скорость снар€да
+    {
+        //transform.Translate(Vector2.right * speed * Time.deltaTime);
+        if (Player.is_look_right == true)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
+        else if (Player.is_look_right == false)
+        {
+            transform.Translate(-Vector2.right * speed * Time.deltaTime);
+        }
     }
 
     // Update is called once per frame
@@ -28,6 +48,6 @@ public class Bullet : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        Throwing();
     }
 }

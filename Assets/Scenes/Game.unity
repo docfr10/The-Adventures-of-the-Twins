@@ -2085,12 +2085,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3285315164125278105, guid: 05090aca91415de459968d942aef4760, type: 3}
     - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
+      propertyPath: speed__
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
+      propertyPath: distance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
+      propertyPath: lifetime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: shortPoint
       value: 
       objectReference: {fileID: 165809721}
     - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
+      propertyPath: jump_fource
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: startTimeBTWShots
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
+      propertyPath: whatIsSolid.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 2614021301015784014, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: m_RootOrder
