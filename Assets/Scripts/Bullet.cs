@@ -11,11 +11,12 @@ public class Bullet : MonoBehaviour
     public LayerMask whatIsSolid;
     public GameObject bullet;
     public bool is_active = true;
+    public bool is_look_right__;
 
     // Start is called before the first frame update
     private void Start()
     {
-        
+        is_look_right__ = Player.is_look_right;
     }
 
     private void OnBecameInvisible() //≈сли снар€д ушел за поле зрени€ камеры игрока, то он уничтожаетс€
@@ -26,11 +27,11 @@ public class Bullet : MonoBehaviour
     public void Throwing() //ћетод, задающий скорость снар€да
     {
         //transform.Translate(Vector2.right * speed * Time.deltaTime);
-        if (Player.is_look_right == true)
+        if (is_look_right__ == true)
         {
             gameObject.transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
-        else if (Player.is_look_right == false)
+        else if (is_look_right__ == false)
         {
             gameObject.transform.Translate(-Vector2.right * speed * Time.deltaTime);
         }
