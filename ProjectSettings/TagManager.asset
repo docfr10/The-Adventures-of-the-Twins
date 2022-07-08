@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
   - Bullet
+  - Standing_Enemy
+  - Moving_Enemy
   layers:
   - Default
   - TransparentFX
