@@ -101,5 +101,7 @@ MonoBehaviour:
   damage: 1
   whatIsSolid:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
+  bullet: {fileID: 0}
   is_active: 0
+  is_look_right__: 0

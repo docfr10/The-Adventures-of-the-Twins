@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour //Класс, отвечающий за метаемые снаряды
             }
             if (hitInfo.collider.CompareTag("Moving_Enemy")) //Столкновение с движущимся врагом
             {
-                //hitInfo.collider.GetComponent<Moving_Enemy>().TakeDamage(damage); //Если снаряд столкнулся со врагом у врага отниммется здоровье
+                hitInfo.collider.GetComponent<Moving_Enemy>().TakeDamage(damage); //Если снаряд столкнулся со врагом у врага отниммется здоровье
             }
             Destroy(gameObject); //Сам снаряд уничтожается
         }
