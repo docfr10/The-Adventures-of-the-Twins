@@ -111,7 +111,7 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     private void Update()
     {
 
-        if (is_grounded && (State != States.AppleThrow)) //Если персонаж на земле и не стреляет, то проигрывается анимация стояния на месте
+        if (is_grounded) //Если персонаж на земле и не стреляет, то проигрывается анимация стояния на месте
             State = States.idle;
 
         if (Input.GetButton("Horizontal"))

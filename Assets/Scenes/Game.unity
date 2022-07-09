@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165809720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.73, y: 1.32, z: 0}
+  m_LocalPosition: {x: -0.87, y: 1.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2614021302417775164}
@@ -2333,11 +2333,11 @@ PrefabInstance:
       objectReference: {fileID: 165809721}
     - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: jump_fource
-      value: 0.1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: startTimeBTWShots
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: whatIsSolid.m_Bits
