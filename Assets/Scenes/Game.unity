@@ -2333,7 +2333,7 @@ PrefabInstance:
       objectReference: {fileID: 165809721}
     - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: jump_fource
-      value: 0.25
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2614021301015784012, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: startTimeBTWShots

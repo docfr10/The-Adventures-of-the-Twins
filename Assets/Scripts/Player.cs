@@ -78,8 +78,10 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
 
     private void FallСheck() //Проверка на то, падает ли персонаж
     {
-        if (rb.velocity.y < 0)
+        //////////////////////////////////////////////////////
+        if (rb.velocity.y < 0 && (State != States.AppleThrow))
             State = States.JumpDOWN;
+        //////////////////////////////////////////////////////
     }
 
     private void Throwing() //Метод, отвечающий за стрельбу
