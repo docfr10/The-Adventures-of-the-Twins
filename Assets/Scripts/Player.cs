@@ -97,6 +97,18 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
         Debug.Log(lives);
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Platform")
+            this.transform.parent = collision.transform;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Platform")
+            this.transform.parent = null;
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
