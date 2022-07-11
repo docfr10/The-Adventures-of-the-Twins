@@ -64,7 +64,7 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
             rb.AddForce(Vector2.up * jump_fource * 2, ForceMode2D.Impulse); //Прыжок игрока
             State = States.Jump; //Как только вызывается метод Jump проигрывается анимация прыжка
         }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             Physics2D.IgnoreLayerCollision(8, 9, true); //Игнорируем слои для Игрока и Платформы
             Invoke("IgnoreLayerOff", 0.7f); //Запускаем метод отключающий игнорирование слоев через n секунд
