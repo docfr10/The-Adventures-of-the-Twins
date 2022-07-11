@@ -58,8 +58,17 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
 
     private void Jump() //Метод, отвечающий за прыжок персонажа
     {
-        rb.AddForce(transform.up * 2 * jump_fource, ForceMode2D.Impulse); //Прыжок игрока
-        State = States.Jump; //Как только вызывается метод Jump проигрывается анимация прыжка
+        if (is_grounded && Input.GetButton("Jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0); //Обнуляем вектор ускорения персонажа, чтобы при столкновении с платформой импульс прыжка не увеличивался
+            rb.AddForce(Vector2.up * jump_fource * 2, ForceMode2D.Impulse); //Прыжок игрока
+            State = States.Jump; //Как только вызывается метод Jump проигрывается анимация прыжка
+        }
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            Physics2D.IgnoreLayerCollision(8, 9, true); //Игнорируем слои для Игрока и Платформы
+            Invoke("IgnoreLayerOff", 0.7f); //Запускаем метод отключающий игнорирование слоев через n секунд
+        }
     }
 
     private void Flip()//Повороты игрока
@@ -84,7 +93,7 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
         //////////////////////////////////////////////////////
     }
 
-    private void Throwing() //Метод, отвечающий за стрельбу
+    private void Throw() //Метод, отвечающий за стрельбу
     {
         Instantiate(bullet, shortPoint.position, transform.rotation);
         timeBTWShots = startTimeBTWShots;
@@ -95,6 +104,11 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     {
         lives -= 1;
         Debug.Log(lives);
+    }
+
+    private void IgnoreLayerOff() //Метод позволяет вновь определять столновения между Платформой и Игроком
+    {
+        Physics2D.IgnoreLayerCollision(8, 9, false); 
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -131,14 +145,13 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
         if (Input.GetButton("Horizontal"))
             Move();
 
-        if (is_grounded && Input.GetButton("Jump"))
-            Jump();
+        Jump();
 
         if (timeBTWShots <= 0)
         {
             if (Input.GetKey(KeyCode.R))
             {
-                Throwing();
+                Throw();
             }
         }
         else

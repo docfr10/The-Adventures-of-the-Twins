@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour //Класс, отвечающий за метаемые снаряды
         Destroy(gameObject);    
     }
 
-    public void Throwing() //Метод, задающий скорость снаряда
+    public void Throw() //Метод, задающий скорость снаряда
     {
         if (is_look_right__ == true)
         {
@@ -52,6 +52,6 @@ public class Bullet : MonoBehaviour //Класс, отвечающий за метаемые снаряды
             }
             Destroy(gameObject); //Сам снаряд уничтожается
         }
-        Throwing();
+        Throw();
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Standing_Enemy
   - Moving_Enemy
   - Platform
+  - Moving_Platform
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - Solid
   - Ground
-  - 
-  - 
+  - Platform
+  - Character
   - 
   - 
   - 
