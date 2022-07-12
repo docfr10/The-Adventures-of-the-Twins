@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Standing_Enemy : MonoBehaviour //Класс, отвечающий за неподвижного врага
+public class Standing_Enemy : MonoBehaviour //Класс отвечает за поведение неподвижного врага
 {
     public int health;
 

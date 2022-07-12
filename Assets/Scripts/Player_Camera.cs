@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Camera : MonoBehaviour // ласс, отвечающий за камеру игрока
+public class Player_Camera : MonoBehaviour // ласс отвечает за камеру игрока
 {
     [SerializeField] private Transform transform_player;
     private Vector3 position; //¬ данный вектор будут записыватьс€ координаты движени€

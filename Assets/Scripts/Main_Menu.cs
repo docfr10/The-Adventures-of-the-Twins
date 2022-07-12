@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Menu : MonoBehaviour //Класс отвечает за главное игровое меню
+public class Main_Menu : MonoBehaviour //Класс отвечает за главное игровое меню
 {
     [SerializeField] private Button start_button, exit_button;
     [SerializeField] private GameObject panel;

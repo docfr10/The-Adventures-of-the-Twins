@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moving_Enemy : MonoBehaviour
+public class Moving_Enemy : MonoBehaviour // ласс отвечает за поведение движущегос€ врага
 {
     public float speed;
     [SerializeField] private int health = 4;

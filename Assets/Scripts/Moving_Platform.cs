@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class Moving_Platform : MonoBehaviour //Класс отвечает за поведение движущейся платформы
 {
     public bool is_moving = true;
     public float speed;

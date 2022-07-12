@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour //Класс, отвечающий за метаемые снаряды
+public class Bullet : MonoBehaviour //Класс отвечает за поведение метаемых снарядов
 {
     public float speed;
     public float lifetime;
