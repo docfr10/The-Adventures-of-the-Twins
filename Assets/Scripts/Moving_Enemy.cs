@@ -8,6 +8,7 @@ public class Moving_Enemy : MonoBehaviour //Класс отвечает за поведение движущег
     [SerializeField] private int health = 4;
 
     public Rigidbody2D rb;
+    public Rigidbody2D player_rb;
     public LayerMask groundLayer;
     public Transform groundCheck;
     private SpriteRenderer sprite;
@@ -36,15 +37,15 @@ public class Moving_Enemy : MonoBehaviour //Класс отвечает за поведение движущег
         transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) //Проверка столкновения с игроком, если игрок столкнулся со врагом у игрока отнимаются жизни
+    private void OnCollisionEnter2D(Collision2D collision) //Проверка столкновения
     {
         if (collision.gameObject == GameObject.FindGameObjectWithTag("Player")) //Если игрок столкнулся с врагом
         {
             FindObjectOfType<Player>().GetDamage(); //У игрока вызывается метод GetDamage() и у игрока отнимается здоровье
             if (isFacingRight)
-                rb.AddForce(-transform.right * 100f, ForceMode2D.Impulse); //Если враг повернут вправо, то игрока отбрасывает влево
+                player_rb.AddForce(transform.right * 10f, ForceMode2D.Impulse); //Если враг повернут вправо, то игрока отбрасывает вправо
             else
-                rb.AddForce(transform.right * 100f, ForceMode2D.Impulse); //Если враг повернут влево, то игрока отбрасывает вправо
+                player_rb.AddForce(-transform.right * 10f, ForceMode2D.Impulse); //Если враг повернут влево, то игрока отбрасывает влево
             Change_Direction(); //После этого враг меняет направление движения
         }
     }
