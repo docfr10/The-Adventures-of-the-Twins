@@ -117,6 +117,15 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
             //gameObject.GetComponent<UI>().Death();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if(collision.gameObject.tag == "Standing_Enemy" || collision.gameObject.tag == "Moving_Enemy")
+        //    if(is_look_right)
+        //        rb.AddForce(-transform.right * 9.0F, ForceMode2D.Impulse); //отбрасывание
+        //    else
+        //        rb.AddForce(transform.right * 9.0F, ForceMode2D.Impulse); //отбрасывание
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Moving_Platform")

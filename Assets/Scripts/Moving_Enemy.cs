@@ -15,9 +15,9 @@ public class Moving_Enemy : MonoBehaviour //Класс отвечает за поведение движущег
     bool isFacingRight = true;
     RaycastHit2D hit;
 
-    private void Move()
+    private void Move() //Метод, определяющий то куда можно двишаться врагу
     {
-        hit = Physics2D.Raycast(groundCheck.position, -transform.up, 1f, groundLayer);
+        hit = Physics2D.Raycast(groundCheck.position, -transform.up, 1f, groundLayer); //Стоим луч и смотрим есть ли впереди земля
     }
 
     public void TakeDamage(int damage) //Метод, отнимающмй у врага жизнь при попадании снаряда, вызывается в Bullet
@@ -30,15 +30,28 @@ public class Moving_Enemy : MonoBehaviour //Класс отвечает за поведение движущег
         Destroy(gameObject);
     }
 
+    private void Change_Direction() //Метод, который меняет направление движения врага на противоположное
+    {
+        isFacingRight = !isFacingRight;
+        transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) //Проверка столкновения с игроком, если игрок столкнулся со врагом у игрока отнимаются жизни
     {
-        if (collision.gameObject == GameObject.FindGameObjectWithTag("Player"))
-            FindObjectOfType<Player>().GetDamage(); //Если игрок столкнулся с врагом у игрока вызывается метод GetDamage() и у игрока отнимается здоровье
+        if (collision.gameObject == GameObject.FindGameObjectWithTag("Player")) //Если игрок столкнулся с врагом
+        {
+            FindObjectOfType<Player>().GetDamage(); //У игрока вызывается метод GetDamage() и у игрока отнимается здоровье
+            if (isFacingRight)
+                rb.AddForce(-transform.right * 100f, ForceMode2D.Impulse); //Если враг повернут вправо, то игрока отбрасывает влево
+            else
+                rb.AddForce(transform.right * 100f, ForceMode2D.Impulse); //Если враг повернут влево, то игрока отбрасывает вправо
+            Change_Direction(); //После этого враг меняет направление движения
+        }
     }
 
     // Start is called before the first frame update
     private void Start()
-    {
+    { 
 
     }
 
@@ -59,8 +72,7 @@ public class Moving_Enemy : MonoBehaviour //Класс отвечает за поведение движущег
         }
         else
         {
-            isFacingRight = !isFacingRight;
-            transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+            Change_Direction();
         }
         if (health <= 0)
             Death();
