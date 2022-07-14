@@ -49,3 +49,6 @@ TagManager:
   - name: AngryTree
     uniqueID: 87054497
     locked: 0
+  - name: Kaban
+    uniqueID: 2204564751
+    locked: 0
