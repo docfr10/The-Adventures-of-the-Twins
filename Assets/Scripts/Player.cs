@@ -109,21 +109,14 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
         Physics2D.IgnoreLayerCollision(8, 9, false); 
     }
 
-    private void Death()
+    public int Lives()
     {
-        //NOT WORK
-
-        //if (lives <= 0)
-            //gameObject.GetComponent<UI>().Death();
+        return lives;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if(collision.gameObject.tag == "Standing_Enemy" || collision.gameObject.tag == "Moving_Enemy")
-        //    if(is_look_right)
-        //        rb.AddForce(-transform.right * 9.0F, ForceMode2D.Impulse); //отбрасывание
-        //    else
-        //        rb.AddForce(transform.right * 9.0F, ForceMode2D.Impulse); //отбрасывание
+        
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -162,7 +155,6 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
         Jump();
         CheckGround();
         FallСheck();
-        Death();
 
         if (timeBTWShots <= 0)
         {

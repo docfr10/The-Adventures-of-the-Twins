@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс на уровне
 {
-    //public GameObject DeadScreenUI;
+    public GameObject DeadScreenUI;
 
     public void Begin()
     {
@@ -13,7 +13,12 @@ public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс н
 
     public void Death()
     {
-        Debug.Log("Work");
+        if (FindObjectOfType<Player>().Lives() <= 0)
+        {
+            Time.timeScale = 0;
+
+            DeadScreenUI.SetActive(true);
+        }
     }
 
     // Start is called before the first frame update
@@ -25,6 +30,6 @@ public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс н
     // Update is called once per frame
     private void Update()
     {
-        
+        Death();
     }
 }
