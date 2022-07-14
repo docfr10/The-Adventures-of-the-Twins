@@ -24,10 +24,7 @@ public class Standing_Enemy : MonoBehaviour //Класс отвечает за поведение неподв
         if (collision.gameObject == GameObject.FindGameObjectWithTag("Player"))
         {
             FindObjectOfType<Player>().GetDamage(); //Если игрок столкнулся с врагом у игрока вызывается метод GetDamage() и у игрока отнимается здоровье
-            if (is_look_right__)
-                rb.AddForce(-transform.right * 10f, ForceMode2D.Impulse); //Если игрок повернут вправо, то игрока отбрасывает влево
-            else
-                rb.AddForce(transform.right * 10f, ForceMode2D.Impulse); //Если игрок повернут влево, то игрока отбрасывает вправо
+            rb.AddForce(-transform.right * 10, ForceMode2D.Impulse); //Если игрок столкнулся с врагом то игрока отбрасывает влево
         }
     }
 

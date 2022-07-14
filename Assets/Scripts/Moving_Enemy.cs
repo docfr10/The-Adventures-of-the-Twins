@@ -13,12 +13,27 @@ public class Moving_Enemy : MonoBehaviour //Класс отвечает за поведение движущег
     public Transform groundCheck;
     private SpriteRenderer sprite;
 
+    private Animator animator;
+
     bool isFacingRight = true;
     RaycastHit2D hit;
+
+    public enum States //Запись всех состояний анимаций
+    {
+        Run,
+        Punch
+    }
+
+    public States State
+    {
+        get { return (States)animator.GetInteger("state"); } //Получаем активное состояние анимации
+        set { animator.SetInteger("state", (int)value); } //Меняем активное состтяние анимации
+    }
 
     private void Move() //Метод, определяющий то куда можно двишаться врагу
     {
         hit = Physics2D.Raycast(groundCheck.position, -transform.up, 1f, groundLayer); //Стоим луч и смотрим есть ли впереди земля
+        State = States.Run;
     }
 
     public void TakeDamage(int damage) //Метод, отнимающмй у врага жизнь при попадании снаряда, вызывается в Bullet
@@ -41,6 +56,7 @@ public class Moving_Enemy : MonoBehaviour //Класс отвечает за поведение движущег
     {
         if (collision.gameObject == GameObject.FindGameObjectWithTag("Player")) //Если игрок столкнулся с врагом
         {
+            State = States.Punch;
             FindObjectOfType<Player>().GetDamage(); //У игрока вызывается метод GetDamage() и у игрока отнимается здоровье
             if (isFacingRight)
                 player_rb.AddForce(transform.right * 10f, ForceMode2D.Impulse); //Если враг повернут вправо, то игрока отбрасывает вправо
@@ -52,8 +68,8 @@ public class Moving_Enemy : MonoBehaviour //Класс отвечает за поведение движущег
 
     // Start is called before the first frame update
     private void Start()
-    { 
-
+    {
+        animator = GetComponent<Animator>(); //Присваиваем значение Animator игрока к переменным в скрипте
     }
 
     // Update is called once per frame

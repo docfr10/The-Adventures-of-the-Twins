@@ -1337,9 +1337,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1042493436}
   - component: {fileID: 1042493437}
-  - component: {fileID: 1042493438}
   - component: {fileID: 1042493439}
   - component: {fileID: 1042493440}
+  - component: {fileID: 1042493441}
   m_Layer: 6
   m_Name: Standing_Enemy
   m_TagString: Standing_Enemy
@@ -1383,124 +1383,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!60 &1042493438
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042493435}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.109, y: 1.038}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.16689305, y: -0.16514054}
-      - {x: 0.17905614, y: -0.5593531}
-      - {x: 0.101236515, y: -0.91464674}
-      - {x: -0.3520719, y: -0.9179328}
-      - {x: -0.36055517, y: -0.77759635}
-      - {x: -0.32783222, y: -0.7511411}
-      - {x: -0.33328363, y: -0.7075482}
-      - {x: -0.402647, y: -0.70302397}
-      - {x: -0.46525553, y: -0.6981372}
-      - {x: -0.49067628, y: -0.79455376}
-      - {x: -0.59453416, y: -0.58357704}
-      - {x: -0.6793353, y: -0.29218447}
-      - {x: -0.69098896, y: -0.50459063}
-      - {x: -0.63818866, y: -0.663144}
-      - {x: -0.5117042, y: -0.9231471}
-      - {x: -0.61119676, y: -0.91729444}
-      - {x: -0.87422717, y: -0.92197955}
-      - {x: -0.8853964, y: -0.81200373}
-      - {x: -0.9570354, y: -0.7725064}
-      - {x: -0.98359406, y: -0.69977814}
-      - {x: -1.0225677, y: -0.702381}
-      - {x: -0.98329157, y: -0.9249233}
-      - {x: -1.2252064, y: -0.9431778}
-      - {x: -1.3678434, y: -0.9998113}
-      - {x: -1.4230562, y: -0.6919782}
-      - {x: -1.4217095, y: -0.53293693}
-      - {x: -1.4504213, y: -0.5186403}
-      - {x: -1.4568594, y: -0.6871578}
-      - {x: -1.526446, y: -0.7591159}
-      - {x: -1.5492094, y: -0.72547734}
-      - {x: -1.5775611, y: -0.5170645}
-      - {x: -1.6590803, y: -0.1684368}
-      - {x: -1.6811812, y: -0.42181906}
-      - {x: -1.6454481, y: -0.778697}
-      - {x: -1.6000292, y: -1.0595751}
-      - {x: -1.5231766, y: -1.2662294}
-      - {x: -1.5900049, y: -1.2710817}
-      - {x: -1.5948516, y: -1.3131497}
-      - {x: -1.4634198, y: -1.4048809}
-      - {x: -1.3975922, y: -1.608507}
-      - {x: -1.4292637, y: -1.978858}
-      - {x: -1.3768092, y: -2.3331556}
-      - {x: -1.3698382, y: -2.6243033}
-      - {x: -0.9695083, y: -2.7123852}
-      - {x: -0.07309902, y: -2.7680779}
-      - {x: 0.69675374, y: -2.783192}
-      - {x: 1.3055339, y: -2.7761924}
-      - {x: 1.7878802, y: -2.7415192}
-      - {x: 1.8894479, y: -2.6678402}
-      - {x: 1.9481244, y: -2.4894695}
-      - {x: 1.9627073, y: -2.1659966}
-      - {x: 1.8363163, y: -1.574366}
-      - {x: 1.8869851, y: -1.4306779}
-      - {x: 2.0148666, y: -1.4066538}
-      - {x: 2.0956368, y: -1.3246759}
-      - {x: 2.0758402, y: -1.2860006}
-      - {x: 2.014204, y: -1.3205324}
-      - {x: 2.074112, y: -0.8501085}
-      - {x: 2.0568502, y: -0.43351245}
-      - {x: 2.027051, y: -0.38619244}
-      - {x: 2.0078306, y: -0.799702}
-      - {x: 1.9155744, y: -1.1397142}
-      - {x: 1.786555, y: -1.393574}
-      - {x: 1.810154, y: -1.0579588}
-      - {x: 1.7924385, y: -1.0271851}
-      - {x: 1.6559515, y: -0.9851165}
-      - {x: 1.3794558, y: -0.95376825}
-      - {x: 1.3973294, y: -0.7028437}
-      - {x: 1.3702308, y: -0.6819976}
-      - {x: 1.3256474, y: -0.7872872}
-      - {x: 1.324063, y: -0.49868152}
-      - {x: 1.2740136, y: -0.35008103}
-      - {x: 1.2504462, y: -0.34079105}
-      - {x: 1.2765846, y: -0.63217443}
-      - {x: 1.2305031, y: -0.9361588}
-      - {x: 0.85752374, y: -0.9112144}
-      - {x: 0.8595761, y: -0.83585817}
-      - {x: 0.8334281, y: -0.82257086}
-      - {x: 0.83676946, y: -0.72307}
-      - {x: 0.8131779, y: -0.68467224}
-      - {x: 0.7610186, y: -0.8145973}
-      - {x: 0.72235453, y: -0.61483496}
-      - {x: 0.65315676, y: -0.54784644}
-      - {x: 0.6840649, y: -0.6784487}
-      - {x: 0.67388946, y: -0.9090662}
-      - {x: 0.37017262, y: -0.91643167}
-      - {x: 0.38669974, y: -0.48816076}
-      - {x: 0.35590684, y: -0.50135815}
-      - {x: 0.3589098, y: -0.2611802}
-      - {x: 0.33209196, y: -0.23831186}
-      - {x: 0.31221625, y: -0.38588747}
-      - {x: 0.27484125, y: -0.3983447}
-      - {x: 0.23201644, y: -0.2819224}
 --- !u!114 &1042493439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,6 +1417,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1042493441
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042493435}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.17426854, y: -0.60025847}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.2848554, y: 2.2005167}
+  m_EdgeRadius: 0
 --- !u!1001 &1105823758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3339,7 +3247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2614021301015784014, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.77
+      value: -14.6
       objectReference: {fileID: 0}
     - target: {fileID: 2614021301015784014, guid: a5189389db799d74792bf33478839a97, type: 3}
       propertyPath: m_LocalPosition.y
