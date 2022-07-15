@@ -109,7 +109,7 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
         Physics2D.IgnoreLayerCollision(8, 9, false); 
     }
 
-    public int Lives()
+    public int Lives() //Метод возвращает количество жизней игрока, это необходимо чтобы вызвался экран проигрыша
     {
         return lives;
     }
@@ -145,27 +145,30 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     // Update is called once per frame
     private void Update()
     {
-
-        if (is_grounded) //Если персонаж на земле и не стреляет, то проигрывается анимация стояния на месте
-            State = States.idle;
-
-        if (Input.GetButton("Horizontal"))
-            Move();
-
-        Jump();
-        CheckGround();
-        FallСheck();
-
-        if (timeBTWShots <= 0)
+        if (lives > 0) //Если количество жизней больше нуля, то персонажем можно управлять, в ином случае, персонаж "замораживается"
         {
-            if (Input.GetKey(KeyCode.R))
+            Time.timeScale = 1; //Возобновляем время
+            if (is_grounded) //Если персонаж на земле и не стреляет, то проигрывается анимация стояния на месте
+                State = States.idle;
+
+            if (Input.GetButton("Horizontal"))
+                Move();
+
+            Jump();
+            CheckGround();
+            FallСheck();
+
+            if (timeBTWShots <= 0)
             {
-                Throw();
+                if (Input.GetKey(KeyCode.R))
+                {
+                    Throw();
+                }
             }
-        }
-        else
-        {
-            timeBTWShots -= Time.deltaTime;
+            else
+            {
+                timeBTWShots -= Time.deltaTime;
+            }
         }
     }
 }

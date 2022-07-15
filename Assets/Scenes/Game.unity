@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeadScreenUI: {fileID: 56804848}
+  Player: {fileID: 1832830611}
 --- !u!1001 &83141459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1162,7 +1163,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 78726543}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: Death
+        m_MethodName: Button_Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2306,6 +2307,11 @@ Transform:
   m_Father: {fileID: 757987879}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1832830611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2614021301015784011, guid: a5189389db799d74792bf33478839a97, type: 3}
+  m_PrefabInstance: {fileID: 2614021302417775161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1937039115
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,7 +2397,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 78726543}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: Death
+        m_MethodName: Button_Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
