@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour // ласс отвечает за передвижение персонажа
 {
     public float jump_fource; //сила прыжка
     [SerializeField] private float speed = 3f; //скорость движени€
-    [SerializeField] private int lives = 3; //количество жизней
+    [SerializeField] private int health; //количество жизней
     [SerializeField] private bool is_grounded = false;
+
+    [SerializeField] private Image[] hearts;
+
+    [SerializeField] private Sprite alive_hearts;
 
     public static Rigidbody2D rb;
     private Animator animator;
@@ -18,12 +23,6 @@ public class Player : MonoBehaviour // ласс отвечает за передвижение персонажа
 
     private float timeBTWShots;
     public float startTimeBTWShots;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>(); //ѕрисваиваем значение Rigidbody игрока к переменным в скрипте
-        animator = GetComponent<Animator>(); //ѕрисваиваем значение Animator игрока к переменным в скрипте
-    }
 
     public enum States //«апись всех состо€ний анимаций
     {
@@ -100,8 +99,8 @@ public class Player : MonoBehaviour // ласс отвечает за передвижение персонажа
 
     public void GetDamage() //ћетод, отвечающий за отнимаение жизней у игрока, вызываетс€ в Enemy
     {
-        lives -= 1;
-        Debug.Log(lives);
+        health -= 1;
+        Debug.Log(health);
     }
 
     private void IgnoreLayerOff() //ћетод позвол€ет вновь определ€ть столновени€ между ѕлатформой и »гроком
@@ -111,7 +110,7 @@ public class Player : MonoBehaviour // ласс отвечает за передвижение персонажа
 
     public int Lives() //ћетод возвращает количество жизней игрока, это необходимо чтобы вызвалс€ экран проигрыша
     {
-        return lives;
+        return health;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -131,6 +130,14 @@ public class Player : MonoBehaviour // ласс отвечает за передвижение персонажа
             this.transform.parent = null;
     }
 
+    private void Awake()
+    {
+        health = 3;
+
+        rb = GetComponent<Rigidbody2D>(); //ѕрисваиваем значение Rigidbody игрока к переменным в скрипте
+        animator = GetComponent<Animator>(); //ѕрисваиваем значение Animator игрока к переменным в скрипте
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -145,7 +152,7 @@ public class Player : MonoBehaviour // ласс отвечает за передвижение персонажа
     // Update is called once per frame
     private void Update()
     {
-        if (lives > 0) //≈сли количество жизней больше нул€, то персонажем можно управл€ть, в ином случае, персонаж "замораживаетс€"
+        if (health > 0) //≈сли количество жизней больше нул€, то персонажем можно управл€ть, в ином случае, персонаж "замораживаетс€"
         {
             Time.timeScale = 1; //¬озобновл€ем врем€
             if (is_grounded) //≈сли персонаж на земле и не стрел€ет, то проигрываетс€ анимаци€ сто€ни€ на месте
@@ -168,6 +175,14 @@ public class Player : MonoBehaviour // ласс отвечает за передвижение персонажа
             else
             {
                 timeBTWShots -= Time.deltaTime;
+            }
+
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                if (i < health)
+                    hearts[i].sprite = alive_hearts;
+                else
+                    hearts[i].enabled = false;
             }
         }
     }
