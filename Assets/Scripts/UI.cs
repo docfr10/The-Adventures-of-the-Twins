@@ -14,7 +14,7 @@ public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс н
 
     public void Death() //Метод, который вызвает экран проигрыша
     {
-        if (FindObjectOfType<Player>().Lives() <= 0) //Если у персонажа 0 или меньше жизней, то вызывается экран проигрыша и останавливается время
+        if (FindObjectOfType<Player>().Die()) //Если у персонажа 0 или меньше жизней, то вызывается экран проигрыша и останавливается время
         {
             Time.timeScale = 0;
             DeadScreenUI.SetActive(true);

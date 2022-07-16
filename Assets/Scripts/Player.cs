@@ -100,22 +100,32 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     public void GetDamage() //Метод, отвечающий за отнимаение жизней у игрока, вызывается в Enemy
     {
         health -= 1;
-        if (health <= 0)
+        Die();
+        Debug.Log(health);
+    }
+
+    public bool Die() //Метод возвращает значение того жив игрок или нет
+    {
+        if (health <= 0) //Если здоровье игрока меньше или равно нуля то метод возвращает true
         {
             foreach (var h in hearts)
-                h.enabled = false;
+                h.enabled = false; //Удаляем все сердца
+            return true;
         }
-        Debug.Log(health);
+        else if (gameObject.transform.position.y <= -6f) //Если игрок выпал за границу уровня - он проиграл
+        {
+            health -= 3; //Отнимаем все жизни чтобы управление персонажем было заблокировано
+            foreach (var h in hearts)
+                h.enabled = false; //Удаляем все сердца
+            return true;
+        }
+        else //Во всех остальных случаях возвращаем false
+            return false;
     }
 
     private void IgnoreLayerOff() //Метод позволяет вновь определять столновения между Платформой и Игроком
     {
         Physics2D.IgnoreLayerCollision(8, 9, false); 
-    }
-
-    public int Lives() //Метод возвращает количество жизней игрока, это необходимо чтобы вызвался экран проигрыша
-    {
-        return health;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -146,7 +156,7 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     // Start is called before the first frame update
     private void Start()
     {
-
+        
     }
 
     private void FixedUpdate()
