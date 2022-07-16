@@ -5,11 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс на уровне
 {
-    public GameObject DeadScreenUI;
+    public GameObject DeadScreenUI, WinScreenUI;
 
     public void Begin()
     {
 
+    }
+
+    public void Win() //Метод, который вызывает экран выигрыша
+    {
+        if (!(GameObject.FindGameObjectWithTag("Standing_Enemy")) && !(GameObject.FindGameObjectWithTag("Moving_Enemy"))) //Если все враги уничтожены, то игрок победил
+        {
+            Time.timeScale = 0;
+            WinScreenUI.SetActive(true);
+        }
     }
 
     public void Death() //Метод, который вызвает экран проигрыша
@@ -26,6 +35,12 @@ public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс н
         SceneManager.LoadScene(1); //Перезагружаем сцену с уровнем
     }
 
+    public void Button_Next_Level() //Метод вызывается когда нажимается кнопка перехода на следующий уровень
+    {
+        Debug.Log("Pressed");
+        //При добавлении нового уровня добавить SceneManager.LoadScene(Номер сцены со следующим уровнем)
+    }
+
     public void Button_Exit() //Метод вызывается когда нажимается кнопка "Выход"
     {
         SceneManager.LoadScene(0); //Выходим в меню
@@ -40,6 +55,7 @@ public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс н
     // Update is called once per frame
     private void Update()
     {
+        Win();
         Death();
     }
 }

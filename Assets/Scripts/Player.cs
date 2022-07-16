@@ -100,7 +100,7 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     public void GetDamage() //Метод, отвечающий за отнимаение жизней у игрока, вызывается в Enemy
     {
         health -= 1;
-        Die();
+        Die(); //Проверяем умер игрок или нет
         Debug.Log(health);
     }
 
@@ -126,11 +126,6 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     private void IgnoreLayerOff() //Метод позволяет вновь определять столновения между Платформой и Игроком
     {
         Physics2D.IgnoreLayerCollision(8, 9, false); 
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -192,7 +187,7 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
                 timeBTWShots -= Time.deltaTime;
             }
 
-            for (int i = 0; i < hearts.Length; i++)
+            for (int i = 0; i < hearts.Length; i++) //Цикл, который при уменьшении здоровье убирает сердечки с экрана
             {
                 if (i < health)
                     hearts[i].enabled = true;
