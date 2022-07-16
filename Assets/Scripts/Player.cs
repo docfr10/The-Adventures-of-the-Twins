@@ -100,6 +100,11 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     public void GetDamage() //Метод, отвечающий за отнимаение жизней у игрока, вызывается в Enemy
     {
         health -= 1;
+        if (health <= 0)
+        {
+            foreach (var h in hearts)
+                h.enabled = false;
+        }
         Debug.Log(health);
     }
 
@@ -180,7 +185,7 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
             for (int i = 0; i < hearts.Length; i++)
             {
                 if (i < health)
-                    hearts[i].sprite = alive_hearts;
+                    hearts[i].enabled = true;
                 else
                     hearts[i].enabled = false;
             }
