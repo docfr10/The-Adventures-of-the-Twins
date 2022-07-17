@@ -162,7 +162,8 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
     // Update is called once per frame
     private void Update()
     {
-        if (health > 0) //Если количество жизней больше нуля, то персонажем можно управлять, в ином случае, персонаж "замораживается"
+        if (health > 0 && !FindObjectOfType<UI>().IsPause()) //Если количество жизней больше нуля и не нажата кнопка паузы
+                                                             //то персонажем можно управлять, в ином случае, персонаж "замораживается"
         {
             Time.timeScale = 1; //Возобновляем время
             if (is_grounded) //Если персонаж на земле и не стреляет, то проигрывается анимация стояния на месте
@@ -175,16 +176,16 @@ public class Player : MonoBehaviour //Класс отвечает за передвижение персонажа
             CheckGround();
             FallСheck();
 
-            if (timeBTWShots <= 0)
+            if (timeBTWShots <= 0) //Проверка на перезарядку снарядов чтобы игрок не мог спамить снарядами
             {
-                if (Input.GetKey(KeyCode.R))
+                if (Input.GetKey(KeyCode.R)) //Если нажать на R будет вызван метод метания снаряда
                 {
                     Throw();
                 }
             }
             else
             {
-                timeBTWShots -= Time.deltaTime;
+                timeBTWShots -= Time.deltaTime; //Если время перезарядки не закончилось, оно уменьшается пока не дойдет до нуля
             }
 
             for (int i = 0; i < hearts.Length; i++) //Цикл, который при уменьшении здоровье убирает сердечки с экрана

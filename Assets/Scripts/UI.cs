@@ -5,12 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс на уровне
 {
-    public GameObject DeadScreenUI, WinScreenUI;
-
-    public void Begin()
-    {
-
-    }
+    public GameObject DeadScreenUI, WinScreenUI, PauseMenuUI;
+    private bool GameIsPause = false;
 
     public void Win() //Метод, который вызывает экран выигрыша
     {
@@ -30,6 +26,13 @@ public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс н
         }
     }
 
+    public void Pause() //Метод постановки игры на паузу
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPause = true;
+    }
+
     public void Button_Restart() //Метод вызывается когда нажимается кнопка "Рестарт"
     {
         SceneManager.LoadScene(1); //Перезагружаем сцену с уровнем
@@ -41,9 +44,21 @@ public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс н
         //При добавлении нового уровня добавить SceneManager.LoadScene(Номер сцены со следующим уровнем)
     }
 
+    public void Resume() //Метод снятия игры с паузы
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPause = false;
+    }
+
     public void Button_Exit() //Метод вызывается когда нажимается кнопка "Выход"
     {
         SceneManager.LoadScene(0); //Выходим в меню
+    }
+
+    public bool IsPause() //Метод, который возвращает значение того на паузе игра или нет
+    {
+        return GameIsPause;
     }
 
     // Start is called before the first frame update
@@ -55,6 +70,17 @@ public class UI : MonoBehaviour //Класс отвечает за пользовательский интерфейс н
     // Update is called once per frame
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) //Если была нажата клавиша ESC
+        {
+            if (GameIsPause) //Если игра на паузе вызывается метод снятия с паузы
+            {
+                Resume();
+            }
+            else //Иначе если игра не на паузе вызывается метод постановки игры на паузу
+            {
+                Pause();
+            }
+        }
         Win();
         Death();
     }
